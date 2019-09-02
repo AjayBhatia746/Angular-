@@ -1,0 +1,20 @@
+<div [hidden]="user">
+  <h1>Sign in wth your phone number</h1>
+  <input type="text"[(ngModel)]="phoneNumber.country">
+  <input type="text"[(ngModel)]="phoneNumber.area">
+  <input type="text"[(ngModel)]="phoneNumber.prefix">
+  <input type="text"[(ngModel)]="phoneNumber.line">
+   <div id="recaptcha-container">
+ 
+   </div>
+ <button (click)="sendLoginCode()">CLick To get otp</button>
+ <div *ngIf="windowRef.confirmationResult">
+   <label for="code">Enter your verification code here</label>
+   <input type="text" name="code" [(ngModel)]="verificationCode" class="input">
+   <button (click)="verifylogincode()"> Verify Code</button>
+ </div>
+ <div *ngIf="user">
+   You have successfully loged in 
+   Userid: {{user?.id}}
+ </div>
+  </div>

@@ -1,43 +1,20 @@
-<!-- <input type="text" class="form-control" (input)="onServer($event)"> 
-<input type="text" class="form-control" [(ngModel)]="data" placeholder="UserName">
-<p>
-  {{data}}
-</p>
-<button class="btn btn-primary" [disabled]="allowDisabled" (click)="click()">Click me</button>
+ <div [hidden]="user">
+ <h1>Sign in wth your phone number</h1>
+ <input type="text"[(ngModel)]="phoneNumber.country">
+ <input type="text"[(ngModel)]="phoneNumber.area">
+ <input type="text"[(ngModel)]="phoneNumber.prefix">
+ <input type="text"[(ngModel)]="phoneNumber.line">
+  <div id="recaptcha-container">
 
-<p *ngIf="pshow;else noserver">
-  
-  We have server on {{data}}
-</p>
-
-<ng-template #noserver>
-<p>
-  At present we do n't have server type the server name to start it
-</p>
-</ng-template>
-
-
-
-<app-server *ngFor="let server of servers"></app-server>
-
-
- <input type="text" class="form-control" [(ngModel)]="data" placeholder="UserName">
-<p>
-  {{data}}
-</p>
-<button class="btn btn-primary" [disabled]="!data" (click)="click()">Click me</button>
-
-<p *ngIf="allowDisabled">Server name is {{data}}</p>-----here *ngif shos that it is a structural directive and it canges the dom model------ -->
-
-
-
-
-
-
-<input type="text" class="form-control">
-<button class="btn btn-primary" (click)="onClick()">Display Details</button>
-<p *ngIf="decide">Secret Password Tuna</p>
-<ng-template #nop>
-  <p></p>
-</ng-template>
-<p *ngFor="let count of count" [ngStyle]="{ backgroundColor : count>=5?'blue':'transparent' }" [ngClass]="{white:count>=5}">The value of count is {{count}}</p>
+  </div>
+<button (click)="sendLoginCode"></button>
+<div *ngIf="windowRef.confirmationResult">
+  <label for="code">Enter your verification code here</label>
+  <input type="text" name="code" [(ngModel)]="verificationCode" class="input">
+  <button (click)="verifylogincode()"></button>
+</div>
+<div *ngIf="user">
+  You have successfully loged in 
+  Userid: {{user?.id}}
+</div>
+ </div>
