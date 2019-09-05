@@ -37,14 +37,15 @@ export class OtpComponent implements OnInit {
 var appVerifier = this.windowRef.recaptchaVerifier;
 console.log("otp")
 firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
-    .then(function (confirmationResult) {
+    .then(result=> {
       // SMS sent. Prompt user to type the code from the message, then sign the
       // user in with confirmationResult.confirm(code).
-      console.log("otp Sent")
-      this.windowRef.confirmationResult = confirmationResult;
+      // console.log(result)
+      this.windowRef.confirmationResult = result;
+      console.log(this.windowRef.confirmationResult)
     }).catch(function (error) {
       console.log("Error not SENT")
-      console.log(error)
+      // console.log(error)
     });
   }
 
@@ -52,8 +53,8 @@ firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
     
 this.windowRef.confirmationResult.confirm(this.verificationCode).then(function (result) {
  // User signed in successfully.
-  this.user = result.user;
-  // ...
+ 
+  console.log("authenticated")
 }).catch(function (error) {
  console.log({error:error})
 });

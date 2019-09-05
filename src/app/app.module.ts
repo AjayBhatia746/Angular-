@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment.prod';
 import { OtpComponent } from './otp/otp.component';
+//import { ServersComponent } from './servers/servers.component';
 
 @NgModule({
   declarations: [
